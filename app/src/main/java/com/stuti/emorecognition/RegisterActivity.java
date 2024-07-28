@@ -26,6 +26,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.mlkit.vision.face.FaceDetection;
+import com.google.mlkit.vision.face.FaceDetector;
+import com.google.mlkit.vision.face.FaceDetectorOptions;
+
+
 import java.io.FileDescriptor;
 import java.io.IOException;
 
@@ -38,6 +43,22 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     //TODO declare face detector
+
+    // High-accuracy landmark detection and face classification
+    FaceDetectorOptions highAccuracyOpts =
+            new FaceDetectorOptions.Builder()
+                    .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
+                    .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_ALL)
+                    .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
+                    .build();
+
+    FaceDetector detector;
+
+    // Real-time contour detection
+//    FaceDetectorOptions realTimeOpts =
+//            new FaceDetectorOptions.Builder()
+//                    .setContourMode(FaceDetectorOptions.CONTOUR_MODE_ALL)
+//                    .build();
 
 
     //TODO declare face recognizer
@@ -122,6 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //TODO initialize face detector
+        detector = FaceDetection.getClient(highAccuracyOpts);
 
 
         //TODO initialize face recognition model
