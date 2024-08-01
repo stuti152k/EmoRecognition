@@ -30,7 +30,7 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 
 
-public class RecognitionActivity extends AppCompatActivity {
+public class  RecognitionActivity extends AppCompatActivity {
         CardView galleryCard,cameraCard;
         ImageView imageView;
         Uri image_uri;
